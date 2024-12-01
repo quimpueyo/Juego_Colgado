@@ -17,9 +17,9 @@ public class Juego_Colgado {  // Inici de la classe principal anomenada Main
             System.out.println("-1. Sortir ");
             System.out.println("Introdueix un número: ");
 
-            menu = sc.nextInt();// Pregunto quin valor voldrá per a variable menú
+            menu = sc.nextInt(); // Pregunto quin valor voldrá per a variable menú
 
-            switch (menu) {// Utilitzo un switch-case per a que llegeixi la variable de menu, per a diferents casos
+            switch (menu) { // Utilitzo un switch-case per a que llegeixi la variable de menu, per a diferents casos
                 case 1:// Quan el valor de la variable menu sigui = 1
                     int jugadores = 0;
 
@@ -37,6 +37,7 @@ public class Juego_Colgado {  // Inici de la classe principal anomenada Main
                     rondes = sc.nextInt();
 
                     for (int i = 0; i < rondes; i++) {
+                        System.out.println("Partida " + (i + 1));
                         jugarPartida(jugadores); // Crido la funció jugar per tenir els menus separats
                     }
 
@@ -55,7 +56,6 @@ public class Juego_Colgado {  // Inici de la classe principal anomenada Main
 
         System.out.println("Has sortit del programa"); // Quan el valor de la variable menu es -1 provocant que el valor "continuar" sigui false
         sc.close(); // Tanco Scanner
-
     }
 
     // Creo una funció
@@ -63,6 +63,8 @@ public class Juego_Colgado {  // Inici de la classe principal anomenada Main
         Scanner sc = new Scanner(System.in);
         int intents = 6;
         String palabra = "";
+        String paraulaAmagada = "";
+        String lletra = "";
 
         // Preguntar paraula secreta
         System.out.println("Introduzca la palabra secreta");
@@ -71,7 +73,25 @@ public class Juego_Colgado {  // Inici de la classe principal anomenada Main
         // Partida
         for (int i = 0; i < intents; i++) {
             for (int n = 0; n < njugadors; n++) {
-                System.out.println("Ronda " + (i + 1) + " jugador " + njugadors);
+                if (i == 5) {
+                    System.out.println("Jugador " + (n + 1) + " has perdut");
+                    break;
+                } else {
+                    paraulaAmagada = "";
+
+                    // Mostrar paraula amagada
+                    for (int p = 0; p < palabra.length(); p++)
+                    {
+                        paraulaAmagada = paraulaAmagada + "_";
+                    }
+
+                    System.out.println("Paraula: " + paraulaAmagada);
+
+                    // Preguntar una paraula
+                    System.out.println("Dis una lletra");
+                    lletra = sc.next();
+                }
+
             }
         }
 
