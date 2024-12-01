@@ -60,58 +60,42 @@ public class Juego_Colgado {
 		    }
 	
 
-		    // Creo una funció
-		    public static void jugarPartida(int njugadors) {
-		        // Declarem variables que volsrem utilitzar
-		        Scanner sc = new Scanner(System.in);
-		        int intents = 6;
-		        String paraula = "";
-		        String paraulaAmagada = "";
-		        String lletra = "";
+	 // Creo una funció
+    public static void jugarPartida(int njugadors) {
+        Scanner sc = new Scanner(System.in);
+        int intents = 6;
+        String palabra = "";
+        String paraulaAmagada = "";
+        String lletra = "";
 
-		        // Preguntar paraula secreta
-		        System.out.println("Introduzca la palabra secreta");
-		        paraula = sc.next();
+        // Preguntar paraula secreta
+        System.out.println("Introduzca la palabra secreta");
+        palabra = sc.next();
 
-		        // Mostrar paraula amagada per guions
-		        for (int p = 0; p < paraula.length(); p++)
-		        {
-		            paraulaAmagada = paraulaAmagada + "_";
-		            
-		        }
+        // Partida
+        for (int i = 0; i < intents; i++) {
+            for (int n = 0; n < njugadors; n++) {
+                if (i == 5) {
+                    System.out.println("Jugador " + (n + 1) + " has perdut");
+                    break;
+                } else {
+                    paraulaAmagada = "";
 
-		        // Partida
-		        for (int i = 0; i < intents; i++) {
-		            for (int n = 0; n < njugadors; n++) {
-		                if (i == 5) {
-		                    System.out.println("Jugador " + (n + 1) + " has perdut");
-		                    break;
-		                } else {
-		                    System.out.println("Paraula: " + paraulaAmagada);
+                    // Mostrar paraula amagada
+                    for (int p = 0; p < palabra.length(); p++)
+                    {
+                        paraulaAmagada = paraulaAmagada + "_";
+                    }
 
-		                    // Preguntar una paraula
-		                    System.out.println("Dis una lletra");
-		                    lletra = sc.next();
+                    System.out.println("Paraula: " + paraulaAmagada);
 
-		                    
-		                    // Mirar si la lletra que tens està dins la paraula (Utilitzant el contains)
-		                     	
-		                    for (int x = 0; x < paraula.length(); x++) {
-		                        char laParaula = paraula.charAt(x);
+                    // Preguntar una paraula
+                    System.out.println("Dis una lletra");
+                    lletra = sc.next();
+                }
 
-		                        if (paraula.contains(Character.toString(laParaula))) {
-		                            System.out.println("Si");
-		                        } else {
-		                            System.out.println("No");
-		                        }
-		                    }
-		                    // si la conte fas un for de paraula.lenght i vas mirant per cada posició si te la letra o no (Si la te la poses si no la te no la poses)
-		                            
-		                    // Quan la paraula tingui la lletra reompliràs els guions per lletres => _____ de la paraula patata (si busques la p) p____
-		                }
-		            }
-		        }
-		            
-		        }
-		    }   
-		    
+            }
+        }
+
+    } 
+}
